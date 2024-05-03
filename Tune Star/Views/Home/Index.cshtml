@@ -24,7 +24,7 @@
         </form>
     </div>
     <div class="div5">
-       
+     
     </div>
     <div class="div6"> 
 
@@ -38,21 +38,21 @@
                     <div class="artist-name"> @item.Artist</div>
                 </div>
             </div>
-        }
+        } 
 
+    </div>
+
+    <div class="div7">
         <page-link page-model="Model.PageViewModel" page-action="Index"
                    page-url-position="@(Model.FilterViewModel.SelectedPosition)"
                    page-url-genre="@(Model.FilterViewModel.SelectedGenre)"
                    page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>
 
-
-     
-
     </div>
-
+  
     @if (Context.Session.GetString("Login") != null)
     {
-        <div class="div7">
+        <div class="div8">
             <div class="regcontainer">
                 <h2>Upload your own music!</h2>
                 <p>Upload and share your own music on Tune Star!</p>
@@ -63,12 +63,11 @@
     }
     else
     {
-      
-        <div class="div7">
+        <div class="div8">
             <div class="regcontainer">
-                <h2>Thanks for listening. Now join us.</h2>
-                <p>Download and Upload music for free!</p>
-                <button>Create Account</button>
+                <h2>Upload your own music!</h2>
+                <p>Upload and share your own music on Tune Star!</p>
+                <button>Upload my song</button>
             </div>
 
         </div>

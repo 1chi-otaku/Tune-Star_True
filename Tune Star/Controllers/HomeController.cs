@@ -23,7 +23,7 @@ namespace Tune_Star.Controllers
         public async Task<IActionResult> Index(string position, int genre = 0, int page = 1,
             SortState sortOrder = SortState.NameAsc)
         {
-            int pageSize = 6;
+            int pageSize = 12;
 
 
             var songList = await songService.GetSongs();
