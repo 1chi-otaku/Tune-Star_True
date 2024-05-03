@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -132,3 +132,12 @@ body {
 .glyphicon-chevron-left:before {
     content: "\00AB";
 }
+
+.pagination {
+    background-color: transparent;
+}
+
+    .pagination {
+        outline: none;
+
+    }
