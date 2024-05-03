@@ -27,9 +27,27 @@
 
 .div5 {
     grid-area: 3 / 2 / 4 / 5;
-    font-size: 48px;
-    color: white;
+    font-size: 18px;
 }
+
+    .div5 a {
+        color: red;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+        .div5 a:hover {
+            color: darkred; 
+        }
+
+        .div5 a:focus {
+            outline: none; 
+        }
+
+        .div5 a:active {
+            color: maroon; 
+        }
+
 
 .div6 {
     grid-area: 4 / 2 / 6 / 5;
@@ -81,4 +99,31 @@
 
 input[type="text"], select {
     box-sizing: border-box;
+}
+
+
+.title-name {
+    margin: 3px 0;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+}
+
+    .title-name:hover {
+        color: #cc0000; 
+    }
+
+
+.music-card img {
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.music-card:hover img {
+    outline: none;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, red, orange, yellow, lime, blue, indigo, violet) 1;
 }

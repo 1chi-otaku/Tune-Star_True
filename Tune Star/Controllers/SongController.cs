@@ -101,7 +101,7 @@ namespace Tune_Star.Controllers
                     return NotFound();
                 }
                 await songService.DeleteSong(id);
-                return View("~/Views/Home/Index.cshtml", await songService.GetSongs());
+                return RedirectToAction("Index", "Home");
             }
             catch (ValidationException ex)
             {

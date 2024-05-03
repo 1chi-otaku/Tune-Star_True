@@ -24,37 +24,37 @@
         </form>
     </div>
     <div class="div5">
-        <tr>
+         Sort by:    
             <a asp-action="Index"
                asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
                asp-route-position="@(Model.FilterViewModel.SelectedPosition)"
-               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">Name</a>
+               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">-Name-</a>
 
             <a asp-action="Index"
                asp-route-sortOrder="@(Model.SortViewModel.ArtistSort)"
                asp-route-position="@(Model.FilterViewModel.SelectedPosition)"
-               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">Artist</a>
+               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">-Artist-</a>
 
             <a asp-action="Index"
                asp-route-sortOrder="@(Model.SortViewModel.GenreSort)"
                asp-route-position="@(Model.FilterViewModel.SelectedPosition)"
-               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">Genre</a>
-        </tr>
-     
+               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">-Genre-</a>
     </div>
-    <div class="div6"> 
+    <div class="div6">
 
         @foreach (var item in Model.Songs)
         {
             <div class="music-card">
-                <img src="@item.Img" alt="Song Image" style="max-width: 165px; max-height: 165px; width:165px; height:165px;">
-
+                <a asp-controller="Song" asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@item.Img" alt="Song Image" style="max-width: 165px; max-height: 165px; width:165px; height:165px;">
+                </a>
                 <div class="music-info">
-                    <a asp-controller="Song" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
-                    <div class="artist-name"> @item.Artist</div>
+                    <a asp-controller="Song" class="title-name" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                    <div class="artist-name">@item.Artist</div>
                 </div>
             </div>
-        } 
+        }
+
 
     </div>
 
