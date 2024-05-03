@@ -65,11 +65,10 @@ namespace Tune_Star.Controllers
 
 
 
-            string a = "a";
 
 
 
-            return View(await songService.GetSongs());
+            return View(viewModel);
         }
 
         public ActionResult Logout()

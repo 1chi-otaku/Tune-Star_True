@@ -76,3 +76,7 @@
     font-weight: 460;
     font-size: 12px;
 }
+
+input[type="text"], select {
+    box-sizing: border-box;
+}
