@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Tune_Star.BLL.DTO.SongDTO>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/index.css" />
+</head>
+
+
+<div class="parent">
+    <div class="div1"> </div>
+    <div class="div2"> </div>
+    <div class="div3"> <p>Listen & Download these tracks!</p></div>
+    <div class="div4 d-flex align-items-center justify-content-center">
+
+        <div class="d-flex align-items-center w-50">
+            <input type="text" class="form-control w-100 me-2" placeholder="Search for song, artists, genre...">
+            <select class="w-25" style="background-color: red; color: white; border: none; border-radius: 0; padding: 10px;">
+                <option value="1">All</option>
+                <option value="2">Pop</option>
+                <option value="3">Rock</option>
+            </select>
+        </div>
+        
+    
+    </div>
+    <div class="div5">
+       
+    </div>
+    <div class="div6"> 
+
+        @foreach (var item in Model)
+        {
+            <div class="music-card">
+                <img src="@item.Img" alt="Song Image" style="max-width: 165px; max-height: 165px; width:165px; height:165px;">
+
+                <div class="music-info">
+                    <a asp-controller="Song" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                    <div class="artist-name"> @item.Artist</div>
+                </div>
+            </div>
+        }
+        
+
+    </div>
+
+    @if (Context.Session.GetString("Login") != null)
+    {
+        <div class="div7">
+            <div class="regcontainer">
+                <h2>Upload your own music!</h2>
+                <p>Upload and share your own music on Tune Star!</p>
+                <button>Upload my song</button>
+            </div>
+
+        </div>
+    }
+    else
+    {
+      
+        <div class="div7">
+            <div class="regcontainer">
+                <h2>Thanks for listening. Now join us.</h2>
+                <p>Download and Upload music for free!</p>
+                <button>Create Account</button>
+            </div>
+
+        </div>
+    }
+
+</div>

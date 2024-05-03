@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Thank you!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+
+        .window {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-color: red;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .take-me-home {
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+
+<div class="window">
+    <h1>Thank you for your application!</h1>
+    <h3>Registration was successful. You will be able to log into your account as soon as the administrator completes your application.</h3>
+    <a class="nav-link text-dark take-me-home" asp-area="" asp-controller="Home" asp-action="Index">Take Me Home</a>
+</div>

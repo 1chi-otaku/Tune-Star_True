@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Tune_Star.BLL.DTO.UserDTO>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h2>Accept or Deny Applications!</h2>
+
+<table class="table-condensed" style="width:100%">
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Status < 1)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Login)</td>
+                    <td class="d-flex align-items-center">
+                        <form asp-controller="Administrator" asp-action="Verify" method="post" class="mr-2">
+                            <input type="hidden" name="userId" value="@item.Id" />
+                            <button type="submit" class="btn btn-success">Y</button>
+                        </form>
+                        <form asp-controller="Administrator" asp-action="Disprove" method="post">
+                            <input type="hidden" name="userId" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger">X</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,78 @@
+﻿
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 0.2fr 0.3fr 0.2fr repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.div1 {
+    background-color: #181818;
+    grid-area: 1 / 1 / 7 / 2;
+}
+
+.div2 {
+    background-color: #181818;
+    grid-area: 1 / 5 / 7 / 6;
+}
+
+.div3 {
+    grid-area: 1 / 2 / 2 / 5;
+    font-size: 38px;
+}
+
+.div4 {
+    grid-area: 2 / 2 / 3 / 5;
+}
+
+.div5 {
+    grid-area: 3 / 2 / 4 / 5;
+    font-size: 48px;
+    color: white;
+}
+
+.div6 {
+    grid-area: 4 / 2 / 6 / 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.div7 {
+    grid-area: 6 / 2 / 7 / 5;
+}
+
+.music-card {
+    width: calc(20%-38px);
+    margin-right: 23px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+.placeh {
+    width: 165px;
+    height: 165px;
+}
+
+
+
+.song-name, .artist-name {
+    margin: 3px 0;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+
+.song-name {
+    font-size: 11px;
+}
+
+.artist-name {
+    color: #C2B0B0;
+    font-weight: 460;
+    font-size: 12px;
+}

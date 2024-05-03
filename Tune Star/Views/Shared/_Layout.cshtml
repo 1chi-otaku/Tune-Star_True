@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Tune Star!</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Tune_Star.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+
+        var logo1Url = '@Url.Content("~/icons/logo1.png")';
+        var logo2Url = '@Url.Content("~/icons/logo2.png")';
+        function changeStyleAndImage(state) {
+            var tuneStar = document.getElementById('tuneStar');
+            var img = document.getElementById('navbar-img');
+            if (state === 'hovered') {
+                tuneStar.style.color = 'red'; 
+                img.src = logo2Url; 
+            } else {
+                tuneStar.style.color = 'white'; 
+                img.src = logo1Url; 
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-#131212 box-shadow mb-3">
+            <div class="container-fluid d-flex justify-content-between align-items-center" >
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index" style="display: flex; align-items: center;">
+                    <img src="@Url.Content("~/icons/logo1.png")" id="navbar-img" alt="Логотип" style="width: 50px; height: auto;" onmouseover="changeStyleAndImage('hovered')" onmouseout="changeStyleAndImage('normal')">
+                    <span id="tuneStar" style="margin-right: 10px;" onmouseover="changeStyleAndImage('hovered')" onmouseout="changeStyleAndImage('normal')">Tune st☆r</span>
+                </a>
+
+                @if (Context.Session.GetString("Login") != null)
+                {
+                    <p class="welcome">Welcome, <b>@Context.Session.GetString("Login") ☆</b>!  </p>
+                }
+
+               
+                <div class="d-flex align-items-center">
+                    @if (Context.Session.GetString("Login") != null)
+                    {    
+                        @if(Context.Session.GetString("Login") == "admin")
+                        {
+                            <button class="me-3" onclick="redirectToPanel()">Control Panel</button>
+                        }
+                        <button class="me-3" onclick="redirectToCreate()">Upload</button>
+                        <button class="me-3" onclick="redirectToLogOut()">Logout</button>
+
+                    }
+                    else{
+                        <button class="me-3" onclick="redirectToLogin()">Sign in</button>
+                        <button class="me-3" onclick="redirectToRegister()">Create Account</button>
+                    }
+                  
+                </div>
+
+                <script>
+                    function redirectToRegister() {
+                        window.location.href = '@Url.Action("Register", "Users")';
+                    }
+                    function redirectToLogin() {
+                        window.location.href = '@Url.Action("Login", "Users")';
+                    }
+                    function redirectToLogOut() {
+                        window.location.href = '@Url.Action("Logout", "Home")';
+                    }
+                    function redirectToPanel() {
+                        window.location.href = '@Url.Action("ApplicationList", "Administrator")';
+                    }
+                    function redirectToCreate() {
+                        window.location.href = '@Url.Action("Create", "Song")';
+                    }
+
+                </script>
+            </div>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                   
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

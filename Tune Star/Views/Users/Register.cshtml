@@ -1,0 +1,115 @@
+﻿@model Tune_Star.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/authorization.css" />
+</head>
+
+<style>
+    .div1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .center {
+        padding: 10px;
+    }
+
+    .form-control {
+        min-width: 420px;
+    }
+
+    input[type="text"], input[type="password"] {
+        background-color: red;
+        color: white;
+        padding: 10px;
+        border: 3px solid #131212;
+        padding: .375rem .75rem; 
+        line-height: 1.5; 
+    }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #C0C0C0;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: #921A1A;
+            outline: none;
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, red, orange, yellow, lime, blue, indigo, violet) 1;
+            color: white;
+            box-shadow: none;
+        }
+
+    input[type="text"],
+    input[type="password"] {
+        transition: border-image 0.3s ease;
+    }
+
+   label{
+        color: white;
+        font-weight: 600;
+   }
+
+    input[type="submit"]{
+        background-color: transparent;
+        border: 2px solid black;
+        color: white;
+        transition: border 0.3s ease;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, orange, yellow, lime, blue, indigo, violet) 1;
+    }
+
+
+    .text-danger{
+        color: black !important;
+        font-size: 14px;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white !important;
+    }
+
+
+
+    
+</style>
+
+<div class="parent">
+    <div class="div1">
+        
+        <div class="center">
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Login" class="control-label"></label>
+                    <input asp-for="Login" class="form-control" />
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PasswordConfirm" class="control-label"></label>
+                    <input asp-for="PasswordConfirm" class="form-control" />
+                    <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Hop on!" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="div2"> <img src="@Url.Content("/staticImages/registrationimagesmall.png")" /> </div>
+</div>

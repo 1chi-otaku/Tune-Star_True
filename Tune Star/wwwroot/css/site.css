@@ -1,0 +1,98 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: #181818;
+    color: white;
+    font-family: 'Urbanist', sans-serif;
+}
+
+
+.urbanist-<uniquifier > {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+.regcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid red;
+    color: white;
+    transition: border 0.3s ease;
+}
+
+
+    button:hover {
+        border: 2px solid transparent;
+        border-image: linear-gradient(to right, red, orange, yellow, lime, blue, indigo, violet) 1;
+    }
+
+input[type="text"] {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+}
+
+    input[type="text"]::placeholder {
+        color: #C0C0C0;
+    }
+
+    input[type="text"]:focus {
+        background-color: #921A1A;
+        outline: none;
+        border: 2px solid transparent;
+        border-image: linear-gradient(to right, red, orange, yellow, lime, blue, indigo, violet) 1;
+        color: white;
+        box-shadow: none;
+    }
+
+input[type="text"] {
+    transition: border-image 0.3s ease;
+}
+
+select {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+    appearance: none;
+}
+
+    select option {
+        color: white;
+    }
+
+
+
+.welcome b{
+
+    color: red;
+}

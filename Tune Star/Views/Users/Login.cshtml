@@ -1,0 +1,132 @@
+﻿@model Tune_Star.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="parent">
+    <div class="div1">
+
+        <div class="login-form">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Login" class="control-label"></label>
+                    <input asp-for="Login" class="form-control" />
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Logon" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="div2"> <img src="@Url.Content("/staticImages/sideimgleft.png")" /> </div>
+    <div class="div3"> <img src="@Url.Content("/staticImages/sideimgright.png")" /> </div>
+</div>
+
+<style>
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .div1 {
+        grid-area: 1 / 3 / 6 / 8;
+        background-color: red;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    .div2 {
+        grid-area: 1 / 1 / 6 / 3;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div3 {
+        grid-area: 1 / 8 / 6 / 10;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .div2 img,
+        .div3 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+    .form-control {
+        min-width: 420px;
+    }
+
+    input[type="text"], input[type="password"] {
+        background-color: red;
+        color: white;
+        padding: 10px;
+        border: 3px solid #131212;
+        padding: .375rem .75rem;
+        line-height: 1.5;
+    }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #C0C0C0;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: #921A1A;
+            outline: none;
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, red, orange, yellow, lime, blue, indigo, violet) 1;
+            color: white;
+            box-shadow: none;
+        }
+
+    input[type="text"],
+    input[type="password"] {
+        transition: border-image 0.3s ease;
+    }
+
+    label {
+        color: white;
+        font-weight: 600;
+    }
+
+    input[type="submit"] {
+        background-color: transparent;
+        border: 2px solid black;
+        color: white;
+        transition: border 0.3s ease;
+        margin-top: 10px;
+    }
+
+        input[type="submit"]:hover {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, orange, yellow, lime, blue, indigo, violet) 1;
+        }
+
+
+    .text-danger {
+        color: black !important;
+        font-size: 14px;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white !important;
+    }
+</style>
