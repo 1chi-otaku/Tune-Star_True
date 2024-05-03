@@ -36,7 +36,7 @@ namespace Tune_Star.Controllers
             }
             if (!string.IsNullOrEmpty(position))
             {
-                songs = songs.Where(p => p.Artist == position);
+                songs = songs.Where(p => p.Title.ToLower().Contains(position.ToLower()) || p.Artist.ToLower().Contains(position.ToLower()));
             }
 
             songs = sortOrder switch
@@ -62,11 +62,6 @@ namespace Tune_Star.Controllers
                 new FilterViewModel(allgenresList, genre, position),
                 new SortViewModel(sortOrder)
             );
-
-
-
-
-
 
             return View(viewModel);
         }
