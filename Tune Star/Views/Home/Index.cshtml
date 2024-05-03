@@ -24,6 +24,22 @@
         </form>
     </div>
     <div class="div5">
+        <tr>
+            <a asp-action="Index"
+               asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
+               asp-route-position="@(Model.FilterViewModel.SelectedPosition)"
+               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">Name</a>
+
+            <a asp-action="Index"
+               asp-route-sortOrder="@(Model.SortViewModel.ArtistSort)"
+               asp-route-position="@(Model.FilterViewModel.SelectedPosition)"
+               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">Artist</a>
+
+            <a asp-action="Index"
+               asp-route-sortOrder="@(Model.SortViewModel.GenreSort)"
+               asp-route-position="@(Model.FilterViewModel.SelectedPosition)"
+               asp-route-genre="@(Model.FilterViewModel.SelectedGenre)">Genre</a>
+        </tr>
      
     </div>
     <div class="div6"> 
