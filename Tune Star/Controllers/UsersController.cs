@@ -60,52 +60,70 @@ namespace Tune_Star.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginModel logon)
+        public async Task<IActionResult> Login(LoginModel logon)
         {
 
-            var users = userService.GetUsers().Result;
-            int numberOfUsers = users.Count();
-
-            if (numberOfUsers == 0 || logon.Login == null || users == null)
+            try
             {
-                ModelState.AddModelError("", "Wrong login or password!");
+                var users = await userService.GetUsers();
+
+                if (users == null || users.Count() == 0 || logon.Login == null)
+                {
+                    ModelState.AddModelError("", "Wrong login or password!");
+                    return View(logon);
+                }
+
+                var user = await userService.GetUser(logon.Login);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Wrong login or password!");
+                    return View(logon);
+                }
+
+                if (user.Status < 1)
+                {
+                    ModelState.AddModelError("", "Your account has not been approved yet. Contact your administrator.");
+                    return View(logon);
+                }
+
+                if (ModelState.IsValid)
+                {
+
+                    if (user != null)
+                    {
+                        string? salt = user.Salt;
+
+                        byte[] password = Encoding.Unicode.GetBytes(salt + logon.Password);
+
+                        byte[] byteHash = SHA256.HashData(password);
+
+                        StringBuilder hash = new StringBuilder(byteHash.Length);
+                        for (int i = 0; i < byteHash.Length; i++)
+                            hash.Append(string.Format("{0:X2}", byteHash[i]));
+
+                        if (user.Password != hash.ToString())
+                        {
+                            ModelState.AddModelError("", "Wrong login or password!");
+                            return View(logon);
+                        }
+
+                        HttpContext.Session.SetString("Login", user.Login);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else ModelState.AddModelError("", "Wrong login or password!");
+
+                }
+                return View(logon);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Your user either doesn't exist or wrong login or password");
                 return View(logon);
             }
 
-            var user = userService.GetUser(logon.Login).Result;
 
-            if (user.Status < 1) ModelState.AddModelError("", "Your account has not been approved yet. Contact your administrator.");
-
-            if (ModelState.IsValid)
-            {
-               
-                if (user != null)
-                {
-                    string? salt = user.Salt;
-  
-                    byte[] password = Encoding.Unicode.GetBytes(salt + logon.Password);
-
-                    byte[] byteHash = SHA256.HashData(password);
-
-                    StringBuilder hash = new StringBuilder(byteHash.Length);
-                    for (int i = 0; i < byteHash.Length; i++)
-                        hash.Append(string.Format("{0:X2}", byteHash[i]));
-
-                    if (user.Password != hash.ToString())
-                    {
-                        ModelState.AddModelError("", "Wrong login or password!");
-                        return View(logon);
-                    }
-
-                    HttpContext.Session.SetString("Login", user.Login);
-
-                    return RedirectToAction("Index", "Home");
-                }
-                else ModelState.AddModelError("", "Wrong login or password!");
-   
-            }
-            return View(logon);
         }
-
     }
 }
