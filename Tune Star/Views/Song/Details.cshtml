@@ -55,6 +55,7 @@
             <source src="@Model.Path" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+        <br />
         @if (Context.Session.GetString("Login") == "admin")
         {
             <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>

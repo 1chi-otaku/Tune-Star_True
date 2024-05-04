@@ -78,9 +78,11 @@ namespace Tune_Star.Controllers
 
                 string songPath = "/music/" + uploadedSong.FileName;
 
-                using (var fileStream = new FileStream(_webHostEnvironment.WebRootPath + songPath, FileMode.Create))
+                string songPhysicalPath = _webHostEnvironment.WebRootPath + songPath;
+
+                using (var fileStream = new FileStream(songPhysicalPath, FileMode.Create))
                 {
-                    await uploadedFile.CopyToAsync(fileStream);
+                    await uploadedSong.CopyToAsync(fileStream);
                 }
 
                 song.Path = songPath;
