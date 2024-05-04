@@ -2,6 +2,7 @@
 using Tune_Star.BLL.Interfaces;
 using Tune_Star.BLL.Services;
 using Tune_Star.BLL.Infrastructure;
+using Tune_Star.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,8 @@ builder.Services.AddSession(options =>
     options.Cookie.Name = "Session";
 
 });
+
+builder.Services.AddScoped<ILangRead, ReadLangServices>();
 
 
 var app = builder.Build();

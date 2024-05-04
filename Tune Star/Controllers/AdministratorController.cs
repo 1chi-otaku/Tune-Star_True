@@ -2,9 +2,12 @@
 using System.ComponentModel.DataAnnotations;
 using Tune_Star.BLL.DTO;
 using Tune_Star.BLL.Interfaces;
+using Tune_Star.Filters;
 
 namespace Tune_Star.Controllers
 {
+    [Culture]
+
     public class AdministratorController : Controller
     {
 

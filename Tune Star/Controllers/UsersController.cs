@@ -7,10 +7,13 @@ using Tune_Star.BLL.DTO;
 using Tune_Star.BLL.Interfaces;
 using Tune_Star.BLL.Services;
 using Tune_Star.DAL.Entities;
+using Tune_Star.Filters;
 using Tune_Star.Models;
 
 namespace Tune_Star.Controllers
 {
+    [Culture]
+
     public class UsersController : Controller
     {
         private readonly IUserService userService;
